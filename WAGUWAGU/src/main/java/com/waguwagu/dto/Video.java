@@ -1,5 +1,7 @@
 package com.waguwagu.dto;
 
+import java.time.LocalDate;
+
 public class Video {
 	private int videoId;
 	private String videoOwner;
@@ -10,6 +12,7 @@ public class Video {
 	private String videoLevel;
 	private String videoCat;
 	private int videoViewCnt;
+	private LocalDate videoRegDate;
 	private int pickCount; // 실제 DB 칼럼이 아닌 임시필드
 	//videoPick에서 계산된 찜 개수를 쿼리 결과로 받아서 담는 용도 
 	
@@ -108,6 +111,15 @@ public class Video {
 
 	public void setPickCount(int pickCount) {
 		this.pickCount = pickCount;
+	}
+	
+	
+	public LocalDate getVideoRegDate() {
+		return videoRegDate;
+	}
+
+	public void setVideoRegDate(LocalDate videoRegDate) {
+		this.videoRegDate = videoRegDate;
 	}
 
 	@Override

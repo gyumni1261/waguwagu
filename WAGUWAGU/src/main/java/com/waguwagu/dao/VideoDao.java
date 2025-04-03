@@ -16,6 +16,6 @@ public interface VideoDao {
 	public abstract List<Video> getVideosSortedByPickCnt();
 	
 	//카테고리 별 정렬
-	public abstract List<Video>  getVideosSortedByCat();
+	public abstract List<Video>  getVideosSortedByCat(String cat);
 	
 }

@@ -17,6 +17,7 @@ USE waguwagu;
  `videoLevel` ENUM('상', '중', '하') NOT NULL,
  `videoCat` ENUM('디저트', '양식', '중식', '한식', '일식') NOT NULL,
  `videoViewCnt` INT NOT NULL DEFAULT 0,
+ `videoRegDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
  `videoOwner` VARCHAR(40) NOT NULL
  );
  
