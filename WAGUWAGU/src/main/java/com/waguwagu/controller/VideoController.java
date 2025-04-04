@@ -41,23 +41,27 @@ public class VideoController extends HttpServlet {
 
 	}
 
-	private void doListByViewCnt(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	private void doListByViewCnt(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("videoList", service.getListByPickCnt());
+		request.getRequestDispatcher("index.jsp").forward(request, response);
+	}
+
+	private void doListByRegTime(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("videoList", service.getListByRegTime());
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 		
 	}
 
-	private void doListByRegTime(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	private void doListByPickCnt(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("videoList", service.getListByPickCnt());
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 		
 	}
 
-	private void doListByPickCnt(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void doListByCat(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	private void doListByCat(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String cat = request.getParameter("category");
+		request.setAttribute("videoList", service.getListOfCat(cat));
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 		
 	}
 

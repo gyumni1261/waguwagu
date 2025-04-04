@@ -171,8 +171,8 @@ public class VideoDaoImpl implements VideoDao {
 				SELECT v.*, COUNT(vp.videoId) AS pickCount
 				FROM video v
 				LEFT JOIN videoPick vp ON v.videoId = vp.videoId
-				GROUP BY v.videoId
 				WHERE v.videoCat=?
+				GROUP BY v.videoId
 				ORDER BY videoViewCnt DESC
 				""";
 		Connection conn = null;
@@ -182,6 +182,7 @@ public class VideoDaoImpl implements VideoDao {
 		try {
 			conn = util.getConnection();
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, cat);
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {

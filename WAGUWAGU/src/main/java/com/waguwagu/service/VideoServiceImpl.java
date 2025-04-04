@@ -20,21 +20,21 @@ public class VideoServiceImpl implements VideoService{
 
 	@Override
 	public List<Video> getListByViewCnt() {
-		return null;
+		return dao.getVideosSortedByViewCnt();
 	}
 
 	@Override
 	public List<Video> getListByRegTime() {
-		return null;
+		return dao.getVideosSortedByRegTime();
 	}
 
 	@Override
 	public List<Video> getListByPickCnt() {
-		return null;
+		return dao.getVideosSortedByPickCnt();
 	}
 
 	@Override
-	public List<Video> getListOfCat(String part) {
-		return null;
+	public List<Video> getListOfCat(String cat) {
+		return dao.getVideosSortedByCat(cat);
 	}
 }
