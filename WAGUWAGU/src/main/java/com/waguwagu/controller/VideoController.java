@@ -60,7 +60,12 @@ public class VideoController extends HttpServlet {
 
 	private void doListByCat(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cat = request.getParameter("category");
-		request.setAttribute("videoList", service.getListOfCat(cat));
+		
+		if("전체".equals(cat)) {
+			request.setAttribute("videoList", service.getListByViewCnt());
+		} else {		
+			request.setAttribute("videoList", service.getListOfCat(cat));
+		}
 		request.getRequestDispatcher("realhome.jsp").forward(request, response);
 		
 	}

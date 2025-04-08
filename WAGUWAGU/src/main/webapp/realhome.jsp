@@ -95,7 +95,7 @@
 				<form action="video" method="get">
 					<input type="hidden" name="act" value="cat"> <select
 						name="category">
-						<option value="한식">전체</option>
+						<option value="전체">전체</option>
 						<option value="한식">한식</option>
 						<option value="중식">중식</option>
 						<option value="일식">일식</option>

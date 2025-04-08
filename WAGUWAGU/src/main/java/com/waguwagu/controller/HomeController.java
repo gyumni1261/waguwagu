@@ -14,6 +14,6 @@ public class HomeController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		System.out.println("MainPage");
-		response.sendRedirect("realhome.jsp");
+		response.sendRedirect("video?act=viewCnt");
 	}
 }
