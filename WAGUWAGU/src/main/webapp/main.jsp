@@ -28,13 +28,11 @@ User loggedInUser = (User) session.getAttribute("loggedInUser");
 	</h2>
 	<a href="user?act=logout">로그아웃</a>
 	<a href="user?act=deleteId">회원탈퇴</a>
-	<a href="review?act=totallist&videoId=1">1번 영상에 대한 리뷰목록</a>
 	<%
 	} else {
 	%>
 	<h2>로그인이 필요합니다.</h2>
 	<a href="user?act=loginform">로그인</a>
-	<a href="review?act=totallist&videoId=1">1번 영상에 대한 리뷰목록</a>
 	<%
 	}
 	%>
