@@ -107,12 +107,17 @@
 
         <c:if test="${user.userId == review.reviewWriter}">
             <div class="d-flex gap-3">
-                <a href="review?act=updateform&reviewId=${review.reviewId}&videoId=${review.videoId}"
+                <a href="review?act=updateform&reviewId=${review.reviewId}"
                    class="btn btn-custom">리뷰 수정하기</a>
-                <a href="review?act=remove&reviewId=${review.reviewId}&videoId=${review.videoId}"
+                <a href="review?act=remove&reviewId=${review.reviewId}"
                    class="btn btn-custom">리뷰 삭제하기</a>
             </div>
         </c:if>
+        
+        <div class="d-flex gap-3">
+            <a href="review?act=totallist&videoId=${review.videoId}"
+               class="btn btn-custom">목록으로</a>
+        </div>
     </div>
 
     <%-- 에러 메시지 알림 --%>

@@ -137,8 +137,6 @@ public class ReviewController extends HttpServlet {
 		System.out.println(review.toString());
 		
 		request.setAttribute("review", review);
-		// 2. 리디렉션
-//	    response.sendRedirect("act=totallist&videoId=" + videoId);
 		request.getRequestDispatcher("/WEB-INF/review/detail.jsp").forward(request, response);
 	}
 

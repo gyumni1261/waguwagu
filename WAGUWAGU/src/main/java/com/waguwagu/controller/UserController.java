@@ -70,11 +70,11 @@ public class UserController extends HttpServlet {
 			session.invalidate(); //세션 삭제
 			session = request.getSession(); //새 세션 생성 (메시지 저장용)
 			session.setAttribute("errorMessage", "회원탈퇴가 완료되었습니다."); //세션에 메시지 저장(리다이렉트 시 요청 새로 생김)
-			response.sendRedirect("index2.jsp");
+			response.sendRedirect("realhome.jsp");
 		}else {
 			//회원탈퇴 실패 -> 메인페이지로 이동
 			session.setAttribute("errorMessage", "알 수 없는 이유로 회원탈퇴에 실패하였습니다. 다시 시도해주세요.");
-			response.sendRedirect("index2.jsp");
+			response.sendRedirect("realhome.jsp");
 		}
 	}
 
@@ -124,7 +124,7 @@ public class UserController extends HttpServlet {
 		session.removeAttribute("loggedInUser"); //세션에서 유저 정보 제거
 		
 		//로그아웃 후 메인페이지로 이동
-		response.sendRedirect("index2.jsp");
+		response.sendRedirect("realhome.jsp");
 	}
 
 	private void doLogin(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -148,7 +148,7 @@ public class UserController extends HttpServlet {
 				session.removeAttribute("prevPage");
 				response.sendRedirect(prevPage);
 			}else {
-				response.sendRedirect("index2.jsp"); 				
+				response.sendRedirect("realhome.jsp"); 				
 			}
 		}else {
 			//로그인 실패 -> 로그인 페이지로 돌아가기
