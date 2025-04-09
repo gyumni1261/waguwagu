@@ -124,7 +124,7 @@ public class UserController extends HttpServlet {
 		session.removeAttribute("loggedInUser"); //세션에서 유저 정보 제거
 		
 		//로그아웃 후 메인페이지로 이동
-		response.sendRedirect("realhome.jsp");
+		response.sendRedirect("home");
 	}
 
 	private void doLogin(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -148,7 +148,7 @@ public class UserController extends HttpServlet {
 				session.removeAttribute("prevPage");
 				response.sendRedirect(prevPage);
 			}else {
-				response.sendRedirect("realhome.jsp"); 				
+				response.sendRedirect("home"); 				
 			}
 		}else {
 			//로그인 실패 -> 로그인 페이지로 돌아가기

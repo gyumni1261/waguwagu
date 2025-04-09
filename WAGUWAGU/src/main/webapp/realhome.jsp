@@ -88,14 +88,15 @@
             <div class="section-title">🔥 인기 콘텐츠</div>
             <!-- 여기에 콘텐츠 리스트 카드나 썸네일 삽입 -->
 	        <!-- 정렬 및 필터 -->
-			<a href="video?act=viewCnt">조회수 순</a>
-			<a href="video?act=regTime">최신순</a>
+			<a href="video?act=viewCnt&category=${param.category }">조회수순</a>
+			<a href="video?act=regTime&category=${param.category }">최신순</a>
+			<a href="video?act=pickCnt&category=${param.category }">좋아요순</a>
 	
 			<div class="controls">
 				<form action="video" method="get">
-					<input type="hidden" name="act" value="cat"> <select
-						name="category">
-						<option value="한식">전체</option>
+					<input type="hidden" name="act" value="cat"> 
+					<select name="category">
+						<option value="전체">전체</option>
 						<option value="한식">한식</option>
 						<option value="중식">중식</option>
 						<option value="일식">일식</option>
