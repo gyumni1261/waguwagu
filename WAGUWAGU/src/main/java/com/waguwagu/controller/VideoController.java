@@ -42,24 +42,33 @@ public class VideoController extends HttpServlet {
 	}
 
 	private void doListByViewCnt(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("videoList", service.getListByPickCnt());
+		String cat = request.getParameter("category");
+		
+		request.setAttribute("videoList", service.getListByViewCnt(cat));
 		request.getRequestDispatcher("realhome.jsp").forward(request, response);
 	}
 
 	private void doListByRegTime(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("videoList", service.getListByRegTime());
+		String cat = request.getParameter("category");
+		
+		
+		
+		request.setAttribute("videoList", service.getListByRegTime(cat));
 		request.getRequestDispatcher("realhome.jsp").forward(request, response);
 		
 	}
 
 	private void doListByPickCnt(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("videoList", service.getListByPickCnt());
+		String cat = request.getParameter("category");
+		
+		request.setAttribute("videoList", service.getListByPickCnt(cat));
 		request.getRequestDispatcher("realhome.jsp").forward(request, response);
 		
 	}
 
 	private void doListByCat(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cat = request.getParameter("category");
+		
 		request.setAttribute("videoList", service.getListOfCat(cat));
 		request.getRequestDispatcher("realhome.jsp").forward(request, response);
 		

@@ -28,22 +28,35 @@ public class VideoDaoImpl implements VideoDao {
 	private DBUtil util = DBUtil.getInstance();
 
 	@Override
-	public List<Video> getVideosSortedByViewCnt() {
+	public List<Video> getVideosSortedByViewCnt(String cat) {
 		List<Video> list = new ArrayList<>();
-		String sql = """
+		StringBuilder sql = new StringBuilder("""
 				SELECT v.*, COUNT(vp.videoId) AS pickCount
 				FROM video v
 				LEFT JOIN videoPick vp ON v.videoId = vp.videoId
-				GROUP BY v.videoId
-				ORDER BY videoViewCnt DESC
-				""";
+				""");
+		
+		if (cat != null && !cat.isBlank() && !"전체".equals(cat)) {
+		    sql.append(" WHERE v.videoCat = ? ");
+		    System.out.println("check4");
+		}
+		
+		sql.append("""
+			    GROUP BY v.videoId
+			    ORDER BY videoViewCnt DESC
+			""");
+		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
 		try {
 			conn = util.getConnection();
-			pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql.toString());
+
+			if (cat != null && !cat.isBlank() && !"전체".equals(cat)){
+			    pstmt.setString(1, cat);
+			}
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -73,22 +86,34 @@ public class VideoDaoImpl implements VideoDao {
 	}
 
 	@Override
-	public List<Video> getVideosSortedByRegTime() {
+	public List<Video> getVideosSortedByRegTime(String cat) {
 		List<Video> list = new ArrayList<>();
-		String sql = """
+		StringBuilder sql = new StringBuilder("""
 				SELECT v.*, COUNT(vp.videoId) AS pickCount
 				FROM video v
 				LEFT JOIN videoPick vp ON v.videoId = vp.videoId
-				GROUP BY v.videoId
-				ORDER BY videoRegDate DESC
-				""";
+				""");
+		
+		if (cat != null && !cat.isBlank() && !"전체".equals(cat)) {
+		    sql.append(" WHERE v.videoCat = ? ");
+		}
+		
+		sql.append("""
+			    GROUP BY v.videoId
+			    ORDER BY videoRegDate DESC
+			""");
+		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
 		try {
 			conn = util.getConnection();
-			pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql.toString());
+
+			if (cat != null && !cat.isBlank() && !"전체".equals(cat)) {
+			    pstmt.setString(1, cat);
+			}
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -119,23 +144,35 @@ public class VideoDaoImpl implements VideoDao {
 	}
 
 	@Override
-	public List<Video> getVideosSortedByPickCnt() {
+	public List<Video> getVideosSortedByPickCnt(String cat) {
 
 		List<Video> list = new ArrayList<>();
-		String sql = """
+		StringBuilder sql = new StringBuilder("""
 				SELECT v.*, COUNT(vp.videoId) AS pickCount
 				FROM video v
 				LEFT JOIN videoPick vp ON v.videoId = vp.videoId
-				GROUP BY v.videoId
-				ORDER BY pickCount DESC
-				""";
+				""");
+		
+		if (cat != null && !cat.isBlank() && !"전체".equals(cat)) {
+		    sql.append(" WHERE v.videoCat = ? ");
+		}
+		
+		sql.append("""
+			    GROUP BY v.videoId
+			    ORDER BY pickCount DESC
+			""");
+		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
 		try {
 			conn = util.getConnection();
-			pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql.toString());
+
+			if (cat != null && !cat.isBlank() && !"전체".equals(cat)) {
+			    pstmt.setString(1, cat);
+			}
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -167,22 +204,32 @@ public class VideoDaoImpl implements VideoDao {
 	public List<Video> getVideosSortedByCat(String cat) {
 
 		List<Video> list = new ArrayList<>();
-		String sql = """
+		StringBuilder sql = new StringBuilder("""
 				SELECT v.*, COUNT(vp.videoId) AS pickCount
 				FROM video v
 				LEFT JOIN videoPick vp ON v.videoId = vp.videoId
-				WHERE v.videoCat=?
-				GROUP BY v.videoId
-				ORDER BY videoViewCnt DESC
-				""";
+				""");
+		
+		if (cat != null && !cat.isBlank() && !"전체".equals(cat)) {
+		    sql.append(" WHERE v.videoCat = ? ");
+		}
+		
+		sql.append("""
+			    GROUP BY v.videoId
+			    ORDER BY videoViewCnt DESC
+			""");
+		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
 		try {
 			conn = util.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, cat);
+			pstmt = conn.prepareStatement(sql.toString());
+
+			if (cat != null && !cat.isBlank() && !"전체".equals(cat)){
+			    pstmt.setString(1, cat);
+			}
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
