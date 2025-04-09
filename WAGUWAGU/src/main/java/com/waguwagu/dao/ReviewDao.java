@@ -23,5 +23,8 @@ public interface ReviewDao {
 	
 	//리뷰 조회수 증가
 	abstract boolean updateViewCnt(int reviewId);
+	
+	//영상 좃회수 증가
+	abstract boolean updateVideoViewCnt(int videoId);
 
 }

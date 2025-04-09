@@ -10,7 +10,7 @@
 	<div class="container-fluid position-relative">
 		<div class="row">
 			<div class="col-7 col-md-4">
-				<a href="index2.jsp"> <!-- <i class="fas fa-video tm-site-logo mb-3"></i> -->
+				<a href="video?act=viewCnt"> <!-- <i class="fas fa-video tm-site-logo mb-3"></i> -->
 					<h1 class="tm-site-name">WAGUWAGU</h1>
 				</a>
 			</div>

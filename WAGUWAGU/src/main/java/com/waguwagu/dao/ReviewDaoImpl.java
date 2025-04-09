@@ -165,10 +165,31 @@ public class ReviewDaoImpl implements ReviewDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1,reviewId);
 			int rs = pstmt.executeUpdate();
-			if(rs==1) {
+			if(rs == 1) {
 				return true;
 			}
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			util.close(conn, pstmt);
+		}
+		return false;
+	}
+
+	@Override
+	public boolean updateVideoViewCnt(int videoId) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = """
+				UPDATE video SET videoViewCnt = videoViewCnt + 1 WHERE videoId = ?
+				""";
+		try {
+			conn = util.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, videoId);
+			int rs = pstmt.executeUpdate();
+			if(rs == 1) return true;
+		} catch(SQLException e) {
 			e.printStackTrace();
 		} finally {
 			util.close(conn, pstmt);

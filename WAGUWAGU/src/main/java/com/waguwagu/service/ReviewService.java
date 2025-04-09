@@ -20,5 +20,8 @@ public interface ReviewService {
 	
 	//리뷰 삭제
 	abstract boolean removeReview(int reviewId);
+	
+	//리뷰가 달린 영상 조회수 증가
+	abstract boolean updateVideoViewCnt(int videoId);
 
 }

@@ -43,4 +43,9 @@ public class ReviewServiceImpl implements ReviewService {
 		return dao.deleteReview(reviewId);
 	}
 
+	@Override
+	public boolean updateVideoViewCnt(int videoId) {
+		return dao.updateVideoViewCnt(videoId);
+	}
+
 }
